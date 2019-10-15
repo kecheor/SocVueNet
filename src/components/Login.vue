@@ -25,10 +25,12 @@
   </div> -->
 
   <div>
-
+<b-form @submit="onSubmit" >
   <b-input-group >
    
-     <b-form-input id="input-login" v-model="form.login" required placeholder="Enter login"></b-form-input>
+     <b-form-input id="input-login" v-model="form.login" required placeholder="Enter login">
+
+     </b-form-input>
       <b-form-input
             id="input-password"
             v-model="form.password"
@@ -36,12 +38,15 @@
             placeholder="Enter password"
           ></b-form-input>
            <b-input-group-append >
-      <b-button type="submit" size="sm" variant="success">Login</b-button>
+      <b-button type="submit" size="sm" variant="success" >Login</b-button>
     </b-input-group-append>
   </b-input-group>
+</b-form>
 </div>
 </template>
 <script lang="ts">
+import UserApi from '../services/api';
+
 export default {
   data() {
     return {
@@ -52,9 +57,9 @@ export default {
     };
   },
   methods: {
-    onSubmit(evt) {
-      evt.preventDefault();
-      alert(JSON.stringify(this.form));
+    onSubmit(evt: Event) {
+    const Api = new UserApi();
+      Api.Login(this.form.login, this.form.password);
     }
   }
 };
