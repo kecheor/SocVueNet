@@ -1,6 +1,12 @@
 <template>
 
-<div ><Login />  </div>
+<div class="row">
+    <div class="col-sm" />
+    <div class="col-sm">
+      <Login /> 
+    </div>
+    <div class="col-sm"/>
+  </div>
 
 </template>
 
@@ -20,10 +26,5 @@ export default class Home extends Vue {}
 
 <style>
 
-.logo {
-  filter: hue-rotate(60deg);
-  transform: rotate(-60deg);
-  top: 50px;
-  position: relative;
-}
+
 </style>

@@ -8,27 +8,16 @@
     </div>
     <div class="col-sm"/>
   </div>
-  <div class="row">
-    <div class="col-sm" />
-    <div class="col-sm">
-     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    </div>
-    <div class="col-sm"/>
-  </div>
-  <div class="row">
-    <div class="col-sm" />
-    <div class="col-sm">
-      <router-view/>
-    </div>
-    <div class="col-sm"/>
-  </div>
+  <router-view/>
+  
 </div>
-
 </template>
+<script lang="ts">
+import Vue from 'vue'
+import Component from 'vue-class-component'
 
+export default class App extends Vue {}
+</script>
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -37,6 +26,14 @@
   text-align: center;
   color: #2c3e50;
 }
+
+.logo {
+  filter: hue-rotate(60deg);
+  transform: rotate(-60deg);
+  top: 50px;
+  left: 20px;
+  position: relative;
+}
 #nav {
   padding: 30px;
 }
@@ -44,6 +41,7 @@
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  margin: 0 15px;
 }
 
 #nav a.router-link-exact-active {
