@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-form >
+    <b-form>
       <b-input-group>
         <b-input-group prepend="User">
           <b-form-input id="input-user" v-model="searchText"></b-form-input>
@@ -29,41 +29,36 @@
       </b-list-group>
     </div>
     <b-alert variant="warning" :show="user === null">Noone found</b-alert>
-    <b-alert  :show="user === undefined">Searching</b-alert>
+    <b-alert :show="user === undefined">Searching</b-alert>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import IUser from "../models/IUser";
-import UserService from "../services/UserService";
-import UserDto from "../models/userdto";
-import { join } from "path";
+import { Component, Vue } from 'vue-property-decorator';
+import IUser from '../models/IUser';
+import UserService from '../services/UserService';
 
-@Component({
-  data() {
-    return {
-      user: undefined,
-      searchText: ""
-    };
-  },
-  methods: {
-    async searchUser(publicId) {
-        this.$router.push(`/user/${publicId}`);
-    },
-    logout() {
-        (new UserService()).Logout();
-        this.$router.push("/");
-    }
-  },
-  async created() {
+
+export default class UserView extends Vue {
+
+  public user: IUser | null | undefined = undefined;
+  public searchText: string = '';
+
+  public searchUser(publicId: string): void {
+    this.$router.push(`/user/${publicId}`);
+  }
+
+  public logout(): void {
+    new UserService().Logout();
+    this.$router.push('/');
+  }
+
+  public async created(): Promise<void> {
     const route = await this.$router.currentRoute;
     const service = new UserService();
     this.user = await service.GetUser(route.params.id || null);
- 
   }
-})
-export default class UserView extends Vue {}
+}
 </script>
 <style scoped>
 .user {

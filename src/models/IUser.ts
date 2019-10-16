@@ -1,5 +1,4 @@
-export default interface IUser 
-{
+export default interface IUser {
     Login: string;
     Password: string;
     PublicId: string;
@@ -7,5 +6,5 @@ export default interface IUser
     Lastname: string;
     Gender: string;
     Location: string;
-    Interests: Array<string>;
+    Interests: string[];
 }
